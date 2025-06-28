@@ -6,7 +6,10 @@ export async function POST(request) {
     const db = client.db("Bitlinks")
     const collection = db.collection("urls")
     
-
+    //if url or shortUrl is not provided, return error
+    if (!body.url || !body.shortUrl) {  
+        return NextResponse.json({ success: false, error: true, message: 'URL and Short URL are required!' })
+    }
     // if shorurl already exixsts, return error
     const doc = await collection.findOne({ shortUrl: body.shortUrl })
     if (doc) {

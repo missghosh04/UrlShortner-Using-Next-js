@@ -25,12 +25,11 @@ const page = () => {
         fetch("/api/generate", requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                setgenerated(`${process.env.NEXT_PUBLIC_HOST}/${result.shortUrl}`);
-                // setShortUrl("");
-                // seturl("");
-
-                console.log(`Your Link : ${process.env.NEXT_PUBLIC_HOST}/${result.shortUrl}`);
-                // alert(result.message);
+                setgenerated(`${process.env.NEXT_PUBLIC_HOST}/${shortUrl}`);
+                console.log(result);
+                alert(result.message);
+                setShortUrl("");
+                seturl("");
             })
             .catch((error) => console.error(error));
     }
@@ -41,7 +40,7 @@ const page = () => {
                 <h1 className="text-3xl font-bold">Shorten your URL</h1>
                 <p>Enter your URL below to get started:</p>
             </div>
-            <form className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4">
                 <input type="text"
                     placeholder="Enter your URL"
                     className="border p-2 rounded-md w-200"
@@ -54,10 +53,10 @@ const page = () => {
                     onChange={(e) => setShortUrl(e.target.value)} />
                 <button onClick={generate} className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 my-5 rounded-md">Generate</button>
 
-            </form>
+            </div>
             <div>
                 {generated && <div>
-                    Your Link :<Link  target="_blank"  className='text-blue-500 underline' href={generated}>{generated}</Link>
+                    <span className='font-bold text-lg'>Your Link : </span> <code><Link  target="_blank"  className='text-blue-500 underline ' href={generated}>{generated}</Link></code>
                 </div>}
             </div>
         </div>

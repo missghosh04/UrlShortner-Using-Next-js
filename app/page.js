@@ -20,6 +20,7 @@ export default function Home() {
             width={500}
             height={500}
             className="flex "
+            priority={true}
           />
         </div>
       </section>

@@ -1,11 +1,40 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
+import Link from 'next/link';
 const page = () => {
     const [url, seturl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
-    const [generated, setgenerated] = useState(false);
-    
+    const [generated, setgenerated] = useState("");
+    const generate = (e) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "url": url,
+            "shortUrl": shortUrl
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("/api/generate", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                setgenerated(`${process.env.NEXT_PUBLIC_HOST}/${result.shortUrl}`);
+                // setShortUrl("");
+                // seturl("");
+
+                console.log(`Your Link : ${process.env.NEXT_PUBLIC_HOST}/${result.shortUrl}`);
+                // alert(result.message);
+            })
+            .catch((error) => console.error(error));
+    }
+
     return (
         <div className='flex flex-col h-[70vh] justify-center items-center p-5 space-y-4 text-gray-800 bg-gray-200'>
             <div className='flex flex-col justify-center items-center space-y-2'>
@@ -23,8 +52,14 @@ const page = () => {
                     className="border p-2 rounded-md"
                     value={shortUrl}
                     onChange={(e) => setShortUrl(e.target.value)} />
-                <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 my-5 rounded-md">Generate</button>
+                <button onClick={generate} className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 my-5 rounded-md">Generate</button>
+
             </form>
+            <div>
+                {generated && <div>
+                    Your Link :<Link  target="_blank"  className='text-blue-500 underline' href={generated}>{generated}</Link>
+                </div>}
+            </div>
         </div>
     )
 }

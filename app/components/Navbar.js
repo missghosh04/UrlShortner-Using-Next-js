@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link href="/contact"><li>Contact Us</li></Link>
         <li className='flex space-x-4'>
         <Link href="/shorten"><button className='bg-gray-700 hover:bg-gray-600 text-white py-1 px-4 rounded font-bold'>Try now</button></Link>
-        <Link href="/github"><button className='bg-gray-700 hover:bg-gray-600 text-white py-1 px-4 rounded font-bold'>Github</button></Link>
+        <Link href="/github"target="_blank"><button className='bg-gray-700 hover:bg-gray-600 text-white py-1 px-4 rounded font-bold'>Github</button></Link>
         </li>
       </ul>
     </nav>

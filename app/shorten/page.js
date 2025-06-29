@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 import Link from 'next/link';
-const page = () => {
+const Page = () => {
     const [url, seturl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
     const [generated, setgenerated] = useState("");
@@ -35,7 +35,7 @@ const page = () => {
     }
 
     return (
-        <div className='flex flex-col h-[70vh] justify-center items-center p-5 space-y-4 text-gray-800 bg-gray-200'>
+        <div className='flex flex-col h-[75vh] justify-center items-center p-5 space-y-4 text-gray-800 bg-gray-200'>
             <div className='flex flex-col justify-center items-center space-y-2'>
                 <h1 className="text-3xl font-bold">Shorten your URL</h1>
                 <p>Enter your URL below to get started:</p>
@@ -63,4 +63,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

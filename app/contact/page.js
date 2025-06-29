@@ -17,10 +17,10 @@ export default function ContactPage() {
 
   return (
     <main className=" mx-auto p-6 text-gray-800 bg-gray-200 h-[75vh] flex flex-col justify-center items-center">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">Contact Us</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h1>
 
       <p className="mb-2">
-        Have questions, feedback, or need help? We'd love to hear from you! Fill out the form below or reach out via email.
+        Have questions, feedback, or need help? We &rsquo;d love to hear from you! Fill out the form below or reach out via email.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4 bg-gray-200 p-5 rounded-lg shadow-lg w-1/2">

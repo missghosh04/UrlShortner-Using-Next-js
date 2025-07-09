@@ -17,7 +17,7 @@ const Footer = () => {
                     GitHub
                 </a>
                 <a href="mailto:missghosh042002@gmail.com" className="hover:text-gray-400 text-center text-md">
-                    Email 
+                    Email
                 </a>
                 <a href="#" className="hover:text-gray-400 text-center text-md">
                     Help
